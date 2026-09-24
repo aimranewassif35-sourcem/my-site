@@ -1293,6 +1293,11 @@ async function submitRequest(){
   const id = genRequestId();
   const answers = JSON.parse(JSON.stringify(state.answers));
   answers.files = stripFilesForSave(answers.files);
+    fetch('https://aikfldj.app.n8n.cloud/webhook/new-website-order', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ id, answers })
+  }).catch(()=>{});
 
   try{
     await fbInit;
